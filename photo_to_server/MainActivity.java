@@ -185,34 +185,16 @@ public class MainActivity extends AppCompatActivity {
         });
         text_view = findViewById(R.id.text_view);
 
-        Button sendButton = findViewById(R.id.sendButton);
+        Button connectButton = findViewById(R.id.sendButton);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
+        connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText ip = findViewById(R.id.ip);
-                Editable editableText = ip.getText();
-                SERVER_IP = editableText.toString();
-
-                EditText port = findViewById(R.id.port);
-                editableText = port.getText();
-                SERVER_PORT = Integer.parseInt(editableText.toString());
-                String galleryDir = "/storage/emulated/0/Pictures/";
-                String extension = ".jpg"; // Customize the file name as needed
-                String fileName = "take-photo";
-                fileName += Integer.toString(0);
-                File imageFile = new File(galleryDir, fileName + extension);
-                int fileSizeInBytes = (int) imageFile.length();
-                Log.d(TAG, "IMAGE SENDINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
-                Log.d(TAG, String.valueOf(fileSizeInBytes));
-                if (imageFile.exists()) {
-                    new Thread(new ClientThread(SERVER_IP, SERVER_PORT, imageFile, fileSizeInBytes)).start();
-                }
             }
         });
 
-        Button connectButton = findViewById(R.id.connectButton);
-        connectButton.setOnClickListener(new View.OnClickListener() {
+        Button sendButton = findViewById(R.id.connectButton);
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText ip = findViewById(R.id.ip);
